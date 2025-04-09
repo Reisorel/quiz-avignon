@@ -1,0 +1,43 @@
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-text {
+  padding: 2rem;
+  background-color: #006B80;
+}
+.header-text h1 {
+  color: #fff;
+  font-size: 3rem;
+}
+
+.header-text p {
+  color: aliceblue;
+}
+
+.header-description {
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.header-description p {
+  margin: 0;
+  padding: 0;
+}
+
+.header-picture {
+  display: flex; /* Permet de gérer le contenu avec flexbox */
+  justify-content: center; /* Centre l'image horizontalement */
+  align-items: center; /* Centre l'image verticalement si nécessaire */
+  max-width: 100%; /* Empêche la div de dépasser la largeur de son parent */
+  overflow: hidden; /* Coupe tout débordement éventuel */
+}
+
+.header-picture img {
+  max-width: 100%; /* L'image ne dépasse pas la largeur de la div */
+  max-height: auto; /* Maintient les proportions de l'image */
+  object-fit: contain; /* Ajuste l'image pour qu'elle reste entièrement visible */
+}

@@ -1,0 +1,14 @@
+.central {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #bfbab8;
+}
+.central_container {
+  width: 60%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #1dacf3;
+}/*# sourceMappingURL=Central.css.map */

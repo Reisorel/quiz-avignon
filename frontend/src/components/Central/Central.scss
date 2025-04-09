@@ -1,0 +1,15 @@
+.central {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; // Pour centrer le contenu verticalement
+  min-height: 100vh; // Assure une hauteur minimale égale à la hauteur de la fenêtre
+  background-color: #bfbab8; // Exemple de couleur de fond
+
+  &_container {
+    width: 60%;
+    min-height: 100vh; // Assure une hauteur minimale égale à la hauteur de la fenêtre
+    box-sizing: border-box; // Assure que le padding est inclus dans la largeur totale
+    background-color: #1dacf3; // Exemple de couleur de fond
+  }
+}
