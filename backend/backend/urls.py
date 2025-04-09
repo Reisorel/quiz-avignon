@@ -24,7 +24,15 @@ urlpatterns = [
 # Import the include function to include other URL configurations
 from django.urls import path
 from quiz.views import QuizStartView
+from quiz.views import SaveScoreView
+from quiz.views import AnswerView
+from quiz.views import GetQuestionByIdView
+
+
 
 urlpatterns = [
     path('api/quiz/start/', QuizStartView.as_view()),
+    path('api/quiz/answer/', AnswerView.as_view()),
+    path('api/quiz/score/', SaveScoreView.as_view()),
+    path('api/quiz/question/<str:question_id>/', GetQuestionByIdView.as_view()),
 ]

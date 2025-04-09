@@ -14,3 +14,13 @@ class Question(Document):
         all_answers = [self.correct_answer] + self.wrong_answers
         random.shuffle(all_answers)
         return all_answers
+
+
+from mongoengine import IntField, DateTimeField
+from datetime import datetime
+
+class GameSession(Document):
+    score = IntField(required=True)
+    created_at = DateTimeField(default=datetime.utcnow)
+
+    meta = {'collection': 'game_sessions'}
