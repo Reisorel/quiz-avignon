@@ -1,0 +1,27 @@
+Web app – quizz théâtre.
+STACK TECH
+Backend : python / django
+Frontend : react, scss, vite, gsap
+Déploiement : Render / Vercel.
+DESCRIPTION :
+Backend : Les question sont distribuées de manière complétement aléatoire. Les réponses sont également mélangées aléatoirement pour ne jamais être au même emplacement à chaque partie.
+Le jeu est anonyme, pas de compte utilisateur.
+Aucun accès admin. Tout est gérée dans le code.
+Pas de traduction
+Design desktop et mobile, responsive à inclure.
+Système de chronos : 30 secondes par question
+FONCTIONNEMENT :
+Quiz affiche 10 questions se succédant de manière séquentielle sur une seule page.
+3 possibilités de réponse par question. 1 seule bonne réponse par question. 1 réponse par bloc.
+40 questions dans le stock de questions, choisies aléatoirement.
+Écrans de questions
+La question apparait avec 3 blocs de réponse. Un cercle avec un chrono apparait également et initie un décompte de 30 secondes. Si l’utilisateur n’a pas répondu dans les 30 secondes, la question suivante s’affiche et la question qui n’a pas été répondu est comptée comme fausse.
+Si l’utilisateur clique sur la bonne question, le bloc sur lequel il a cliqué devient vert. Les 2 autres blocs deviennent gris. Le nombre du pourcentage de combien de personne a cliqué sur chaque bloc apparait en blanc dans le bloc. Ce pourcentage est également visible graphiquement par un remplissage horizontal du bloc d’une couleur plus claire que le reste du bloc.
+Un bloc d’écriture « bonne réponse » apparait en dessous des questions. Un court texte précise la réponse. Un bouton est présent pour passer à la question suivante.
+Si l’utilisateur clique sur la mauvaise question, le bloc sur lequel il a cliqué devient rouge. Le bon bloc devient vert, et le dernier bloc devient gris. Le nombre du pourcentage de combien de personne a cliqué sur chaque bloc apparait en blanc dans le bloc. Ce pourcentage est également visible graphiquement par un remplissage horizontal du bloc d’une couleur plus claire que le reste du bloc.
+Un bloc d’écriture « mauvaise réponse » apparait en dessous des questions. Un court texte précise la réponse. Un bouton est présent pour passer à la question suivante.
+Écran final : Affiche « Votre score » avec le score x/10. Petit commentaire sur le niveau.
+Affiche un bloc avec 2 items :
+Possibilité de cliquer sur une icône qui va copier l’adresse de l’app dans la presse papier. Possibilité de refaire une partie.
+
+NOTES : Je maîtrise pas trop mal react et MongoDB mais je n’ai aucune connaissance en Django. Je connais le principe d’un backend sur le modèle MVC avec mise à dispo d’API consommées par le front. Je pense que ça ne devrait pas être trop dur de monter sur Django.
