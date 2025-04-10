@@ -1,4 +1,3 @@
-import React from "react";
 import "./QuestionDisplay.scss";
 import { Question } from "../../types/QuestionsData"; // ← import du typage global
 

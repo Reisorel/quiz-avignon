@@ -1,4 +1,3 @@
-import React from "react";
 import "./ProgressBar.scss";
 
 type Props = {

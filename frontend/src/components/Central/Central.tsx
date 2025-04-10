@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { questions_data } from "../../data/QuestionsData";
 import QuizHeader from "../QuizHeader/QuizHeader";
 import ProgressBar from "../ProgressBar/ProgressBar";
@@ -14,6 +13,28 @@ import { Question } from "../../types/QuestionsData";
 import "./Central.scss";
 
 export default function Central() {
+  const [apiQuestions, setApiQuestions] = useState([]); // State pour les questions de l'API
+
+
+  // Fetch les données au chargement du composant
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/quiz/start/");
+        const data = await response.json();
+        // Console.log les données pour voir leur structure
+        console.log("Questions reçues de l'API:", data);
+        setApiQuestions(data);
+      } catch (error) {
+        console.error("Erreur lors du chargement des questions:", error);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
+
+  apiQuestions.sort(() => Math.random() - 0.5); // Mélange les questions
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -107,8 +128,8 @@ export default function Central() {
               duration={30}
               isActive={timerActive}
               onTimeUp={handleTimeUp}
-              key={currentQuestionIndex}
-            />
+              questionIndex={currentQuestionIndex} // Utilise le nouveau prop
+              />
 
             <QuestionDisplay
               question={currentQuestion}

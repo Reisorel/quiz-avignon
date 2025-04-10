@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Timer.scss";
 
 type Props = {
   duration: number; // Durée totale en secondes (ex: 30)
   isActive: boolean; // Le timer est-il actif ou figé ?
   onTimeUp: () => void; // Fonction à appeler quand le temps est écoulé
-  key: number; // Clé pour reset quand la question change
+  questionIndex: number; // Renomme "key" en "questionIndex"
 };
 
-export default function Timer({ duration, isActive, onTimeUp, key }: Props) {
+export default function Timer({ duration, isActive, onTimeUp, questionIndex }: Props) {
   const [timeLeft, setTimeLeft] = useState(duration);
 
   // 🕐 Reset à chaque nouvelle question
   useEffect(() => {
     setTimeLeft(duration);
-  }, [key]);
+  }, [questionIndex, duration]);
 
   // ⏳ Décompte du timer
   useEffect(() => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import './ResultDisplay.scss';
 
 type Props = {
