@@ -1,13 +1,7 @@
 import React from 'react';
 import './QuestionDisplay.scss';
+import { Question } from '../../types/QuestionsData'; // ← import du typage global
 
-type Question = {
-  id: string;
-  question_text: string;
-  explanation: string;
-  stats: Record<string, number>;
-  answers: string[];
-};
 
 type Props = {
   question: Question;
@@ -24,7 +18,7 @@ const QuestionDisplay: React.FC<Props> = ({ question, questionNumber }) => {
       </h2>
 
       <div className="answers-list">
-        {question.answers.map((answer, index) => (
+        {question.answers?.map((answer, index) => (
           <div key={index} className="answer-item">
             {answer}
           </div>

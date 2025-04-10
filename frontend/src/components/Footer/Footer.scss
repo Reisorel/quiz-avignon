@@ -1,0 +1,9 @@
+.footer-container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; // Pour centrer le contenu verticalement
+  height: 10vh;
+  background-color: #db480e; // Exemple de couleur de fond
+}

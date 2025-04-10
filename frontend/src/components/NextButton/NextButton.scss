@@ -1,0 +1,16 @@
+.next-button {
+  background-color: black;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 2rem auto;
+  display: block;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #333;
+  }
+}

@@ -162,9 +162,6 @@ questions_data = [
         "Stanislas Nordey": 0
     }
   }
-
-
-
 ]
 
 # Suppression des anciennes questions (optionnel)
