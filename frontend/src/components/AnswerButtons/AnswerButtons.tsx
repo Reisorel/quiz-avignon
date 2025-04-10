@@ -8,7 +8,12 @@ type Props = {
   onAnswerClick: (answer: string) => void; // fonction à appeler au clic
 };
 
-export default function AnswerButtons({answers, selectedAnswer, correctAnswer, onAnswerClick }: Props) {
+export default function AnswerButtons({
+  answers,
+  selectedAnswer,
+  correctAnswer,
+  onAnswerClick,
+}: Props) {
   // Fonction utilitaire pour déterminer la classe CSS à appliquer
   const getButtonClass = (answer: string): string => {
     if (!selectedAnswer) return ""; // rien de sélectionné encore
@@ -29,7 +34,7 @@ export default function AnswerButtons({answers, selectedAnswer, correctAnswer, o
           onClick={() => onAnswerClick(answer)}
           disabled={selectedAnswer !== null}
         >
-          {answer}
+          <div className="answer-button-text">{answer}</div>
         </button>
       ))}
     </div>

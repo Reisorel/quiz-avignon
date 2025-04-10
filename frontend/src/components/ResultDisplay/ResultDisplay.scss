@@ -1,0 +1,29 @@
+.result-display-container {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: #006B80;
+
+  p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .result-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+
+    &.correct {
+      color: #6dac57; // vert
+    }
+
+    &.incorrect {
+      color: #c94d3f; // rouge
+    }
+  }
+
+  .result-explanation {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: white;
+  }
+}

@@ -1,0 +1,37 @@
+.score-display {
+  text-align: center;
+  margin-top: 2rem;
+  color: #fff;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #7bb169; // vert
+  }
+
+  .score {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .score-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .share-btn,
+  .restart-btn {
+    background-color: #c1c1c1;
+    border: none;
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #a5a5a5;
+    }
+  }
+}

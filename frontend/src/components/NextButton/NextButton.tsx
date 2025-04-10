@@ -1,14 +1,17 @@
-import React from 'react';
-import './NextButton.scss';
+import React from "react";
+import "./NextButton.scss";
 
 type Props = {
   onNext: () => void;
+  isLast: boolean;
 };
 
-export default function NextButton({ onNext }: Props) {
+export default function NextButton({ onNext, isLast }: Props) {
   return (
-    <button className="next-button" onClick={onNext}>
-      Question suivante
-    </button>
+    <div className="next-button-container">
+      <button className="next-button" onClick={onNext}>
+        {isLast ? "Voir le résultat" : "Question suivante"}{" "}
+      </button>
+    </div>
   );
 }

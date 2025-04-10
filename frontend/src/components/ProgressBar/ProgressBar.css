@@ -1,1 +1,24 @@
-/*# sourceMappingURL=ProgressBar.css.map */
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0b1c3f;
+  height: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.bar-segment {
+  flex: 1;
+  margin: 0 1px;
+  background-color: #555;
+  transition: background-color 0.3s ease;
+}
+
+.bar-segment.correct {
+  background-color: #4caf50;
+}
+
+.bar-segment.wrong {
+  background-color: #d9534f;
+}/*# sourceMappingURL=ProgressBar.css.map */

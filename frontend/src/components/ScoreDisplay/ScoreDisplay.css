@@ -1,0 +1,33 @@
+.score-display {
+  text-align: center;
+  margin-top: 2rem;
+  color: #fff;
+}
+.score-display h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #7bb169;
+}
+.score-display .score {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.score-display .score-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.score-display .share-btn,
+.score-display .restart-btn {
+  background-color: #c1c1c1;
+  border: none;
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.score-display .share-btn:hover,
+.score-display .restart-btn:hover {
+  background-color: #a5a5a5;
+}/*# sourceMappingURL=ScoreDisplay.css.map */

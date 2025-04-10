@@ -1,7 +1,6 @@
-import React from 'react';
-import './QuestionDisplay.scss';
-import { Question } from '../../types/QuestionsData'; // ← import du typage global
-
+import React from "react";
+import "./QuestionDisplay.scss";
+import { Question } from "../../types/QuestionsData"; // ← import du typage global
 
 type Props = {
   question: Question;
@@ -12,18 +11,10 @@ const QuestionDisplay: React.FC<Props> = ({ question, questionNumber }) => {
   if (!question) return null;
 
   return (
-    <div className="question-display">
-      <h2 className="question-number">
+    <div className="question-display-container">
+      <h4 className="question-text">
         {questionNumber}. {question.question_text}
-      </h2>
-
-      <div className="answers-list">
-        {question.answers?.map((answer, index) => (
-          <div key={index} className="answer-item">
-            {answer}
-          </div>
-        ))}
-      </div>
+      </h4>
     </div>
   );
 };

@@ -1,0 +1,28 @@
+.timer-container {
+  display: flex;
+  justify-content: center; /* Added for centering content */
+  align-items: center; /* Added for vertical centering */
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.timer {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+
+  svg {
+    transform: rotate(270deg);
+  }
+
+  .timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1c5754;
+  }
+}

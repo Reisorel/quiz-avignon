@@ -1,0 +1,24 @@
+.result-display-container {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: #006B80;
+}
+.result-display-container p, .result-display-container h1, .result-display-container h2, .result-display-container h3, .result-display-container h4, .result-display-container h5, .result-display-container h6 {
+  margin: 0;
+  padding: 0;
+}
+.result-display-container .result-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.result-display-container .result-title.correct {
+  color: #6dac57;
+}
+.result-display-container .result-title.incorrect {
+  color: #c94d3f;
+}
+.result-display-container .result-explanation {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: white;
+}/*# sourceMappingURL=ResultDisplay.css.map */

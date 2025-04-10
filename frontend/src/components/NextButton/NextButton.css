@@ -1,3 +1,11 @@
+.next-button-container {
+  background-color: #006B80;
+}
+.next-button-container p, .next-button-container h1, .next-button-container h2, .next-button-container h3, .next-button-container h4, .next-button-container h5, .next-button-container h6 {
+  margin: 0;
+  padding: 0;
+}
+
 .next-button {
   background-color: black;
   color: white;
