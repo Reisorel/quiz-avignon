@@ -30,7 +30,9 @@ export default function AnswerButtons({
       {answers.map((answer, index) => (
         <button
           key={index}
-          className={`answer-button ${getButtonClass(answer)}`}
+          className={`answer-button ${getButtonClass(answer)} ${
+            selectedAnswer === answer ? "selected" : ""
+          }`}
           onClick={() => onAnswerClick(answer)}
           disabled={selectedAnswer !== null}
         >

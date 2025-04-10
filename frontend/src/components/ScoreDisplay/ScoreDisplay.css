@@ -6,28 +6,76 @@
 .score-display h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #7bb169;
+  color: #ffffff;
 }
 .score-display .score {
   font-size: 3rem;
   margin-bottom: 2rem;
+  color: #fff;
 }
 .score-display .score-buttons {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
 }
-.score-display .share-btn,
-.score-display .restart-btn {
-  background-color: #c1c1c1;
-  border: none;
-  border-radius: 20px;
-  padding: 1rem 2rem;
+.score-display .button-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.score-display .button-label {
+  margin-bottom: 2rem;
   font-size: 1rem;
-  cursor: pointer;
+  color: #ffffff;
 }
-.score-display .share-btn:hover,
-.score-display .restart-btn:hover {
-  background-color: #a5a5a5;
+.score-display .icon-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: #000000;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.score-display .icon-button:hover {
+  transform: scale(1.1);
+  background-color: #6a6666;
+}
+.score-display .levitating {
+  animation: levitate 1.5s ease-in-out infinite;
+}
+.score-display .copy-message {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: center;
+  animation: fadeInOut 2s ease-in-out;
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes levitate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }/*# sourceMappingURL=ScoreDisplay.css.map */
