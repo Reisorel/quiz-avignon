@@ -26,7 +26,7 @@ export default function Timer({ duration, isActive, onTimeUp, questionIndex }: P
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isActive]);
+  }, [isActive, questionIndex]);
 
   // 🧠 Appel sécurisé de onTimeUp quand timeLeft atteint 0
   useEffect(() => {
