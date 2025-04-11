@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .answer-buttons {
   background-color: #006B80;
   display: flex;
@@ -14,7 +15,7 @@
   text-align: left;
   width: 100%;
   font-size: 1rem;
-  border-radius: 15px;
+  border-radius: 10px;
   border: none;
   background-color: white;
   cursor: pointer;
@@ -24,7 +25,6 @@
   background-color: #f0f0f0;
 }
 .answer-button:disabled {
-  opacity: 0.7;
   cursor: not-allowed;
 }
 .answer-button.correct {
@@ -36,7 +36,8 @@
   color: white;
 }
 .answer-button.highlight-correct {
-  background-color: #c8e6c9;
+  background-color: #4caf50;
+  color: white;
 }
 
 .answer-button.selected {
@@ -46,4 +47,20 @@
 
 .answer-button {
   justify-content: left;
+}
+
+@keyframes blink {
+  0% {
+    background-color: #4CAF50;
+  } /* Vert */
+  50% {
+    background-color: #e0e0e0;
+  } /* Gris */
+  100% {
+    background-color: #4CAF50;
+  } /* Vert */
+}
+.answer-button.blinking {
+  animation: blink 0.3s ease-in-out 3; /* 3 clignotements de 0.3s chacun */
+  color: white !important; /* Ajoute !important pour garantir la priorité */
 }/*# sourceMappingURL=AnswerButtons.css.map */

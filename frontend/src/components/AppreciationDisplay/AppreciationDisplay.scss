@@ -1,0 +1,29 @@
+.score-appreciation {
+  text-align: center;
+  max-width: 80%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  line-height: 1.5;
+
+  h3 {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
+    color: #ffffff;
+    font-weight: normal;
+  }
+
+  .character {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: #cccccc;
+  }
+
+  .quote {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0;
+    color: #f0f0f0;
+  }
+}

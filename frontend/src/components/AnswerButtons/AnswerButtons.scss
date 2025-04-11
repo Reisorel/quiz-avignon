@@ -14,7 +14,7 @@
   text-align: left; // Ajoute cette ligne pour aligner le texte à gauche
   width: 100%;
   font-size: 1rem;
-  border-radius: 15px;
+  border-radius: 10px;
   border: none;
   background-color: white;
   cursor: pointer;
@@ -25,7 +25,6 @@
   }
 
   &:disabled {
-    opacity: 0.7;
     cursor: not-allowed;
   }
 
@@ -40,11 +39,11 @@
   }
 
   &.highlight-correct {
-    background-color: #c8e6c9;
+    background-color: #4caf50;
+    color: white;
   }
 
 }
-
 
 .answer-button.selected {
   border: 2px solid white;
@@ -53,4 +52,16 @@
 
 .answer-button {
   justify-content: left;
+}
+
+// Animation de clignotement pour la bonne réponse
+@keyframes blink {
+  0% { background-color: #4CAF50; } /* Vert */
+  50% { background-color: #e0e0e0; } /* Gris */
+  100% { background-color: #4CAF50; } /* Vert */
+}
+
+.answer-button.blinking {
+  animation: blink 0.3s ease-in-out 3; /* 3 clignotements de 0.3s chacun */
+  color: white !important; /* Ajoute !important pour garantir la priorité */
 }

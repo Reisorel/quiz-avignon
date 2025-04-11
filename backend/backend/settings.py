@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,11 +129,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # --- MongoDB connection using MongoEngine ---
 from mongoengine import connect
+
+MONGO_ENV = os.getenv("ENV", "local")
+
+if MONGO_ENV == "prod":
+    MONGO_URI = os.getenv("MONGO_URI_ATLAS")
+else:
+    MONGO_URI = os.getenv("MONGO_URI_LOCAL")
+
 connect(
     db="quiz_avignon",
-    host="mongodb://localhost:27017",
+    host=MONGO_URI,
     alias="default"
 )
+print("✅ Connected to MongoDB at:", MONGO_URI)
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # ou autre port si ton frontend tourne ailleurs

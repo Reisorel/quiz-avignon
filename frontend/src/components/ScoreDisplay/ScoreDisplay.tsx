@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import "./ScoreDisplay.scss";
+import AppreciationDisplay from "../AppreciationDisplay/AppreciationDisplay";
 
 type Props = {
   score: number;
@@ -12,6 +13,7 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
   const [displayedScore, setDisplayedScore] = useState(0);
   const [copied, setCopied] = useState(false);
   const [copiedMessage, setCopiedMessage] = useState<string | null>(null);
+  const [showAppreciation, setShowAppreciation] = useState(false);
 
   // Référence pour les boutons d'icônes
   const iconsRef = useRef<HTMLDivElement>(null);
@@ -24,15 +26,17 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
       setDisplayedScore(current);
       if (current >= score) {
         clearInterval(interval);
+        // Afficher l'appréciation après que le score soit complet
+        setShowAppreciation(true);
       }
     }, 100);
 
     return () => clearInterval(interval);
   }, [score]);
 
-  // Animation des icônes
+  // Animation des icônes (avec délai augmenté pour laisser l'appréciation s'afficher)
   useEffect(() => {
-    if (!iconsRef.current) return;
+    if (!iconsRef.current || !showAppreciation) return;
 
     // Animation pour les icônes
     gsap.fromTo(
@@ -49,7 +53,7 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
         duration: 0.8,
         stagger: 0.3,
         ease: "back.out(1.7)",
-        delay: 0.5,
+        delay: 0.8, // Délai après l'apparition de l'appréciation
       }
     );
 
@@ -63,18 +67,16 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
         opacity: 1,
         duration: 0.8,
         stagger: 0.3,
-        delay: 0.7,
+        delay: 1.0,
       }
     );
-  }, []);
+  }, [showAppreciation]);
 
+  // Handlers existants...
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleCopyEmail = () => {
@@ -89,6 +91,9 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
       <p className="score">
         {displayedScore}/{total}
       </p>
+
+      {/* Utilisation du nouveau composant */}
+      {showAppreciation && <AppreciationDisplay score={score} />}
 
       <div className="score-buttons" ref={iconsRef}>
         <div className="button-column">
