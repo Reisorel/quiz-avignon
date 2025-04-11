@@ -14,7 +14,7 @@ questions_data = [
         "question_text": "En quelle année a eu lieu la première édition du Festival d’Avignon ?",
         "correct_answer": "1947",
         "wrong_answers": ["1945", "1955"],
-        "explanation": "Le premier festival s’est déroulé en 1947, fondé par Jean Vilar.",
+        "explanation": "Le premier festival s’est déroulé en 1947, sous le nom de semaine d'art en Avignon.",
         "stats": {"1947": 0, "1945": 0, "1955": 0}
     },
     {
@@ -25,17 +25,17 @@ questions_data = [
         "stats": {"Olivier Py": 0, "Jean Vilar": 0, "Alain Françon": 0}
     },
     {
-        "question_text": "Quel est le thème du Festival d’Avignon en 2022 ?",
-        "correct_answer": "L'Humanité",
-        "wrong_answers": ["La Nature", "La Technologie"],
-        "explanation": "Le thème du Festival d’Avignon en 2022 était 'L'Humanité'.",
-        "stats": {"L'Humanité": 0, "La Nature": 0, "La Technologie": 0}
+        "question_text": "En quelle année la danse est officielement intégrée au Festival d’Avignon ?",
+        "correct_answer": "1966",
+        "wrong_answers": ["1956", "1976"],
+        "explanation": "La danse a été intégrée au festival en 1966 sous l'égide de Maurice Béjart.",
+        "stats": {"1966": 0, "1956": 0, "1976": 0}
     },
     {
         "question_text": "Quel est le lieu principal du Festival d’Avignon ?",
         "correct_answer": "Le Palais des Papes",
         "wrong_answers": ["Le Théâtre Antique", "Le Parc des Expositions"],
-        "explanation": "Le Palais des Papes est le lieu principal du Festival d’Avignon.",
+        "explanation": "La cour d'honneur du Palais des Papes est le lieu principal du Festival d’Avignon.",
         "stats": {"Le Palais des Papes": 0, "Le Théâtre Antique": 0, "Le Parc des Expositions": 0}
     },
     {
@@ -48,9 +48,9 @@ questions_data = [
     {
         "question_text": "Quel est le nom du festival qui se déroule en même temps que le Festival d’Avignon ?",
         "correct_answer": "Le Off",
-        "wrong_answers": ["Le In", "Le Festival de Cannes"],
+        "wrong_answers": ["Le In", "L'art en plein air"],
         "explanation": "Le Off est un festival qui se déroule en même temps que le Festival d’Avignon.",
-        "stats": {"Le Off": 0, "Le In": 0, "Le Festival de Cannes": 0}
+        "stats": {"Le Off": 0, "Le In": 0, "L'art en plein air": 0}
     },
     {
         "question_text": "Quel est le nom de la place emblématique du Festival d’Avignon ?",
@@ -103,10 +103,10 @@ questions_data = [
   },
   {
         "question_text": "Quel type de spectacle n’est pas traditionnellement présenté à Avignon ?",
-        "correct_answer": "Concert de rock",
+        "correct_answer": "Concert de jazz",
         "wrong_answers": ["Théâtre", "Danse contemporaine"],
-        "explanation": "Le Festival d’Avignon est centré sur le spectacle vivant, mais pas les concerts de rock.",
-        "stats": {"Concert de rock": 0, "Théâtre": 0, "Danse contemporaine": 0}
+        "explanation": "Le Festival d’Avignon est centré sur le spectacle vivant, mais pas les concerts de jazz.",
+        "stats": {"Concert de jazz": 0, "Théâtre": 0, "Danse contemporaine": 0}
   },
   {
         "question_text": "Quel est le nom du journal quotidien du festival édité par les organisateurs ?",
@@ -138,20 +138,20 @@ questions_data = [
         "Les amateurs de théâtre et de spectacle vivant": 0,
         "Les touristes gastronomiques": 0,
         "Les fans de musique électronique": 0
- }
+  }
    },
-   {
-        "question_text": "Quel outil numérique est utilisé pour réserver des places au Festival ?",
-        "correct_answer": "Le site officiel du Festival",
-        "wrong_answers": ["La billetterie FNAC", "Le site de la mairie d’Avignon"],
-        "explanation": "Les réservations se font principalement via le site officiel du Festival d’Avignon.",
+    {
+        "question_text": "Quel spectacle fondateur, mis en scène par Jean Vilar en 1947, est considéré comme l'acte de naissance du Festival d’Avignon ?",
+        "correct_answer": "Le Cid de Corneille",
+        "wrong_answers": ["Phèdre de Racine", "Andromaque de Racine"],
+        "explanation": "Le Festival d’Avignon est né en 1947 avec la représentation du « Cid » de Corneille, mise en scène par Jean Vilar dans la Cour d’honneur du Palais des Papes.",
         "stats": {
-        "Le site officiel du Festival": 0,
-        "La billetterie FNAC": 0,
-        "Le site de la mairie d’Avignon": 0
+        "Le Cid de Corneille": 0,
+        "Phèdre de Racine": 0,
+        "Andromaque de Racine": 0
     }
-   },
-   {
+    },
+    {
         "question_text": "Quel artiste a ouvert le Festival d’Avignon 2022 avec 'Le Moine noir' ?",
         "correct_answer": "Kirill Serebrennikov",
         "wrong_answers": ["Tiago Rodrigues", "Stanislas Nordey"],
