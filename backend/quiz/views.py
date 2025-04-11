@@ -6,8 +6,10 @@ from rest_framework.generics import RetrieveAPIView
 
 from quiz.models import Question, GameSession
 from .serializers import QuestionSerializer
+from .serializers import RawQuestionSerializer
 
 
+# Lance une nouvelle partie avec 10 questions aléatoires et réponses mélangées
 class QuizStartView(APIView):
     def get(self, request):
         all_questions = list(Question.objects.all())
@@ -15,7 +17,15 @@ class QuizStartView(APIView):
         serializer = QuestionSerializer(selected, many=True)
         return Response(serializer.data)
 
+# Lance une nouvelle partie test avec 10 questions aléatoires
+class QuizTestView(APIView):
+    def get(self, request):
+        all_questions = list(Question.objects.all())
+        selected = random.sample(all_questions, min(10, len(all_questions)))
+        serializer = RawQuestionSerializer(selected, many=True)
+        return Response(serializer.data)
 
+# Enregistre anonyment le socre de la partie en cours
 class SaveScoreView(APIView):
     def post(self, request):
         score = request.data.get("score")
@@ -28,7 +38,7 @@ class SaveScoreView(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-
+# Mise à jour des stats de la question
 class AnswerView(APIView):
     def post(self, request):
         question_id = request.data.get("question_id")
@@ -46,7 +56,7 @@ class AnswerView(APIView):
 
         return Response({"message": "Stat updated"}, status=status.HTTP_200_OK)
 
-# Get individual question by ID
+# Séléctionne une question par son ID
 class GetQuestionByIdView(APIView):
     def get(self, request, question_id):
         question = Question.objects(id=question_id).first()

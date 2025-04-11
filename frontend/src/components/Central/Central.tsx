@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { questions_data } from "../../data/QuestionsData";
+// import { questions_data } from "../../data/QuestionsData";
 import QuizHeader from "../QuizHeader/QuizHeader";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Timer from "../Timer/Timer";
@@ -13,18 +13,17 @@ import { Question } from "../../types/QuestionsData";
 import "./Central.scss";
 
 export default function Central() {
-  const [apiQuestions, setApiQuestions] = useState([]); // State pour les questions de l'API
-
+  const [questions_data, setQuestions_data] = useState<Question[]>([]); // State pour les questions de l'API
 
   // Fetch les données au chargement du composant
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/quiz/start/");
+        const response = await fetch("http://localhost:8000/api/quiz/test/");
         const data = await response.json();
         // Console.log les données pour voir leur structure
         console.log("Questions reçues de l'API:", data);
-        setApiQuestions(data);
+        setQuestions_data(data);
       } catch (error) {
         console.error("Erreur lors du chargement des questions:", error);
       }
@@ -32,8 +31,6 @@ export default function Central() {
 
     fetchQuestions();
   }, []);
-
-  apiQuestions.sort(() => Math.random() - 0.5); // Mélange les questions
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -98,10 +95,10 @@ export default function Central() {
     return [...all].sort(() => Math.random() - 0.5);
   };
 
-  const shuffledAnswers = useMemo(
-    () => getShuffledAnswers(currentQuestion),
-    [currentQuestion]
-  );
+  const shuffledAnswers = useMemo(() => {
+    if (!currentQuestion) return [];
+    return getShuffledAnswers(currentQuestion);
+  }, [currentQuestion]);
 
   return (
     <div className="central">
@@ -129,21 +126,25 @@ export default function Central() {
               isActive={timerActive}
               onTimeUp={handleTimeUp}
               questionIndex={currentQuestionIndex} // Utilise le nouveau prop
+            />
+
+            {currentQuestion && (
+              <QuestionDisplay
+                question={currentQuestion}
+                questionNumber={currentQuestionIndex + 1}
               />
+            )}
 
-            <QuestionDisplay
-              question={currentQuestion}
-              questionNumber={currentQuestionIndex + 1}
-            />
+            {currentQuestion && (
+              <AnswerButtons
+                answers={shuffledAnswers}
+                selectedAnswer={selectedAnswer}
+                correctAnswer={currentQuestion.correct_answer}
+                onAnswerClick={handleAnswerClick}
+              />
+            )}
 
-            <AnswerButtons
-              answers={shuffledAnswers}
-              selectedAnswer={selectedAnswer}
-              correctAnswer={currentQuestion.correct_answer}
-              onAnswerClick={handleAnswerClick}
-            />
-
-            {selectedAnswer && (
+            {selectedAnswer && currentQuestion && (
               <ResultDisplay
                 isCorrect={selectedAnswer === currentQuestion.correct_answer}
                 explanation={currentQuestion.explanation}

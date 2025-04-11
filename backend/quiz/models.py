@@ -15,9 +15,9 @@ class Question(Document):
         random.shuffle(all_answers)
         return all_answers
 
-
 from mongoengine import IntField, DateTimeField
 from datetime import datetime
+
 
 class GameSession(Document):
     score = IntField(required=True)

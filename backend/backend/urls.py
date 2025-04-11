@@ -27,6 +27,7 @@ from quiz.views import QuizStartView
 from quiz.views import SaveScoreView
 from quiz.views import AnswerView
 from quiz.views import GetQuestionByIdView
+from quiz.views import QuizTestView
 
 
 
@@ -35,4 +36,5 @@ urlpatterns = [
     path('api/quiz/answer/', AnswerView.as_view()),
     path('api/quiz/score/', SaveScoreView.as_view()),
     path('api/quiz/question/<str:question_id>/', GetQuestionByIdView.as_view()),
+    path('api/quiz/test/', QuizTestView.as_view()),
 ]
