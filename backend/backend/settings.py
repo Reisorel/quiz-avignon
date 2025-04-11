@@ -12,24 +12,39 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-load_dotenv()
 
+# Choisis une seule méthode pour charger les variables d'environnement
+# Option 1: django-environ
+import environ
+
+env = environ.Env(
+    # Valeurs par défaut
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, "default-insecure-key-change-me"),
+    MONGO_URI_LOCAL=(str, "mongodb://localhost:27017/"),
+    MONGO_URI_ATLAS=(str, ""),
+    ENV=(str, "local"),
+)
+
+# Lire le fichier .env du répertoire BASE_DIR
+BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# Utiliser env() pour accéder aux variables
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-eq^s7zs-b=z#dt1pb2y2_ho27hm(!27*qe)77bv4o(cz%w+zh_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']  # Ajout de .onrender.com
 
 
 # Application definition
@@ -120,6 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -130,12 +146,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # --- MongoDB connection using MongoEngine ---
 from mongoengine import connect
 
-MONGO_ENV = os.getenv("ENV", "local")
-
-if MONGO_ENV == "prod":
-    MONGO_URI = os.getenv("MONGO_URI_ATLAS")
-else:
-    MONGO_URI = os.getenv("MONGO_URI_LOCAL")
+MONGO_ENV = env("ENV")
+MONGO_URI = env("MONGO_URI_ATLAS") if MONGO_ENV == "prod" else env("MONGO_URI_LOCAL")
 
 connect(
     db="quiz_avignon",
@@ -146,5 +158,6 @@ print("✅ Connected to MongoDB at:", MONGO_URI)
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # ou autre port si ton frontend tourne ailleurs
+    "http://localhost:5173",
+    "https://ton-frontend-url.com",  # URL de ton frontend déployé
 ]
