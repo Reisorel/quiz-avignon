@@ -10,6 +10,8 @@ import NextButton from "../NextButton/NextButton";
 import ScoreDisplay from "../ScoreDisplay/ScoreDisplay";
 import Footer from "../Footer/Footer";
 import { Question } from "../../types/QuestionsData";
+import { getQuestions } from "../../services/api";
+
 import "./Central.scss";
 
 export default function Central() {
@@ -28,16 +30,14 @@ export default function Central() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/quiz/test/");
-        const data = await response.json();
-        // Console.log les données pour voir leur structure
+        const data = await getQuestions(); // Utilise ta fonction API
         setQuestions_data(data);
-        setAnswersStatus(Array(data.length).fill("unanswered")); // Initialise le statut des ré<ponses></ponses>
+        setAnswersStatus(Array(data.length).fill("unanswered"));
       } catch (error) {
         console.error("Erreur lors du chargement des questions:", error);
       }
     };
-
+    
     fetchQuestions();
   }, []);
 
