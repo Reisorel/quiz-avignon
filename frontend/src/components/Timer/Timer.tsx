@@ -13,18 +13,12 @@ export default function Timer({ duration, isActive, onTimeUp, questionIndex }: P
 
   // 🕐 Reset à chaque nouvelle question
   useEffect(() => {
-    setTimeLeft(duration);
-  }, [questionIndex, duration]);
-
-  // ⏳ Décompte du timer
-  useEffect(() => {
     if (!isActive) return;
 
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
-          onTimeUp();
           return 0;
         }
         return prev - 1;
@@ -33,6 +27,13 @@ export default function Timer({ duration, isActive, onTimeUp, questionIndex }: P
 
     return () => clearInterval(interval);
   }, [isActive]);
+
+  // 🧠 Appel sécurisé de onTimeUp quand timeLeft atteint 0
+  useEffect(() => {
+    if (timeLeft === 0 && isActive) {
+      onTimeUp();
+    }
+  }, [timeLeft, isActive, onTimeUp]);
 
   // 💫 Logique cercle SVG
   const radius = 50;

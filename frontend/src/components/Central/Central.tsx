@@ -13,7 +13,6 @@ import { Question } from "../../types/QuestionsData";
 import "./Central.scss";
 
 export default function Central() {
-  
   const [questions_data, setQuestions_data] = useState<Question[]>([]); // State pour les questions de l'API
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -25,23 +24,22 @@ export default function Central() {
   >(Array(questions_data.length).fill("unanswered")); // State pour suivre le statut des réponses
   const [timerActive, setTimerActive] = useState(true); // State du timer
 
-    // Fetch les données au chargement du composant
-    useEffect(() => {
-      const fetchQuestions = async () => {
-        try {
-          const response = await fetch("http://localhost:8000/api/quiz/test/");
-          const data = await response.json();
-          // Console.log les données pour voir leur structure
-          console.log("Questions reçues de l'API:", data);
-          setQuestions_data(data);
-          setAnswersStatus(Array(data.length).fill("unanswered")); // Initialise le statut des ré<ponses></ponses>
-        } catch (error) {
-          console.error("Erreur lors du chargement des questions:", error);
-        }
-      };
+  // Fetch les données au chargement du composant
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/quiz/test/");
+        const data = await response.json();
+        // Console.log les données pour voir leur structure
+        setQuestions_data(data);
+        setAnswersStatus(Array(data.length).fill("unanswered")); // Initialise le statut des ré<ponses></ponses>
+      } catch (error) {
+        console.error("Erreur lors du chargement des questions:", error);
+      }
+    };
 
-      fetchQuestions();
-    }, []);
+    fetchQuestions();
+  }, []);
 
   const handleTimeUp = () => {
     if (!selectedAnswer) {
@@ -122,6 +120,7 @@ export default function Central() {
         ) : (
           <>
             <Timer
+              key={currentQuestionIndex} // 🔥 force React à remonter le composant
               duration={30}
               isActive={timerActive}
               onTimeUp={handleTimeUp}
