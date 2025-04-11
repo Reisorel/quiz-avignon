@@ -159,5 +159,5 @@ print("✅ Connected to MongoDB at:", MONGO_URI)
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://ton-frontend-url.com",  # URL de ton frontend déployé
+    "https://quiz-avignon.vercel.app",  # URL de ton frontend déployé
 ]
