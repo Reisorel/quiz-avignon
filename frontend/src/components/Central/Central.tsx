@@ -69,6 +69,8 @@ export default function Central() {
       setTimerActive(false); // 🔥 stop le timer
 
       const isCorrect = answer === currentQuestion.correct_answer;
+      const sound = new Audio(isCorrect ? "/sounds/good.mp3" : "/sounds/bad.mp3");
+      sound.play();
 
       // met à jour answersStatus à l'index courant
       setAnswersStatus((prev) =>

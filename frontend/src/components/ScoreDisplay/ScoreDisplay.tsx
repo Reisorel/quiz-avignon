@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { gsap } from "gsap";
 import "./ScoreDisplay.scss";
 
 type Props = {
@@ -9,10 +10,13 @@ type Props = {
 
 export default function ScoreDisplay({ score, total, onRestart }: Props) {
   const [displayedScore, setDisplayedScore] = useState(0);
-  const [copied, setCopied] = useState(false); // 🆕 message "copié !"
+  const [copied, setCopied] = useState(false);
   const [copiedMessage, setCopiedMessage] = useState<string | null>(null);
 
+  // Référence pour les boutons d'icônes
+  const iconsRef = useRef<HTMLDivElement>(null);
 
+  // Animation du score
   useEffect(() => {
     let current = 0;
     const interval = setInterval(() => {
@@ -21,10 +25,48 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
       if (current >= score) {
         clearInterval(interval);
       }
-    }, 100); // animation rapide (100ms par incrément)
+    }, 100);
 
     return () => clearInterval(interval);
   }, [score]);
+
+  // Animation des icônes
+  useEffect(() => {
+    if (!iconsRef.current) return;
+
+    // Animation pour les icônes
+    gsap.fromTo(
+      iconsRef.current.querySelectorAll(".icon-button"),
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.5,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.3,
+        ease: "back.out(1.7)",
+        delay: 0.5,
+      }
+    );
+
+    // Animation pour les labels
+    gsap.fromTo(
+      iconsRef.current.querySelectorAll(".button-label"),
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.3,
+        delay: 0.7,
+      }
+    );
+  }, []);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -32,11 +74,11 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
 
     setTimeout(() => {
       setCopied(false);
-    }, 2000); // message disparaît après 2s
+    }, 2000);
   };
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("francois.lerosier@gmail.com"); // ✅ ton mail ici
+    navigator.clipboard.writeText("francois.lerosier@gmail.com");
     setCopiedMessage("francois.lerosier@gmail.com copié dans le presse-papier!");
     setTimeout(() => setCopiedMessage(null), 2000);
   };
@@ -48,7 +90,7 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
         {displayedScore}/{total}
       </p>
 
-      <div className="score-buttons">
+      <div className="score-buttons" ref={iconsRef}>
         <div className="button-column">
           <span className="button-label">Partager ce quiz</span>
           <button className="icon-button" onClick={handleCopyLink}>
