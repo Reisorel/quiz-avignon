@@ -4,11 +4,30 @@
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #bfbab8;
+  background-color: #ffffff;
 }
 .central_container {
   width: 60%;
   min-height: 100vh;
   box-sizing: border-box;
   background-color: #006B80;
+}
+
+.debug-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.debug-button:hover {
+  opacity: 1;
 }/*# sourceMappingURL=Central.css.map */

@@ -4,12 +4,33 @@
   align-items: center;
   flex-direction: column; // Pour centrer le contenu verticalement
   min-height: 100vh; // Assure une hauteur minimale égale à la hauteur de la fenêtre
-  background-color: #bfbab8; // Exemple de couleur de fond
+  background-color: #ffffff; // Exemple de couleur de fond
 
   &_container {
     width: 60%;
     min-height: 100vh; // Assure une hauteur minimale égale à la hauteur de la fenêtre
     box-sizing: border-box; // Assure que le padding est inclus dans la largeur totale
     background-color: #006B80;
+  }
+}
+
+// Styles pour le bouton de debug
+.debug-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
   }
 }

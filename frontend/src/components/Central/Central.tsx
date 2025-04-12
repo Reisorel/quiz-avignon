@@ -37,7 +37,7 @@ export default function Central() {
         console.error("Erreur lors du chargement des questions:", error);
       }
     };
-    
+
     fetchQuestions();
   }, []);
 
@@ -100,8 +100,40 @@ export default function Central() {
     return getShuffledAnswers(currentQuestion);
   }, [currentQuestion]);
 
+  // Fonction de debug pour passer directement aux résultats
+  const skipToResults = () => {
+    // Marquer toutes les questions comme répondues (un mélange de bonnes et mauvaises réponses)
+    const mockAnswersStatus = Array(questions_data.length).fill("correct");
+    // On met quelques réponses comme incorrectes pour que ça paraisse réaliste
+    for (let i = 0; i < Math.floor(questions_data.length * 0.3); i++) {
+      const randomIndex = Math.floor(Math.random() * questions_data.length);
+      mockAnswersStatus[randomIndex] = "wrong";
+    }
+
+    // Définir un score entre 6 et 8 pour tester différentes appréciations
+    const mockScore = Math.floor(Math.random() * 3) + 6;
+
+    // Mettre à jour tous les états nécessaires
+    setScore(mockScore);
+    setAnswersStatus(mockAnswersStatus);
+    setIsQuizOver(true);
+    setSelectedAnswer(null);
+    setTimerActive(false);
+  };
+
   return (
     <div className="central">
+      {/* Bouton de debug visible uniquement en développement */}
+      {import.meta.env.DEV && (
+        <button
+          onClick={skipToResults}
+          className="debug-button"
+          title="Passer directement aux résultats (DEV only)"
+        >
+          ⏭️ Résultats
+        </button>
+      )}
+
       <div className="central_container">
         <QuizHeader />
         <ProgressBar answersStatus={answersStatus} />

@@ -14,9 +14,11 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
   const [copied, setCopied] = useState(false);
   const [copiedMessage, setCopiedMessage] = useState<string | null>(null);
   const [showAppreciation, setShowAppreciation] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
 
-  // Référence pour les boutons d'icônes
+  // Référence pour les boutons d'icônes et l'appréciation
   const iconsRef = useRef<HTMLDivElement>(null);
+  const appreciationRef = useRef<HTMLDivElement>(null);
 
   // Animation du score
   useEffect(() => {
@@ -28,15 +30,42 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
         clearInterval(interval);
         // Afficher l'appréciation après que le score soit complet
         setShowAppreciation(true);
+
+        // Programmer l'affichage des boutons avec un délai
+        setTimeout(() => {
+          setShowButtons(true);
+        }, 1200); // Délai après que l'appréciation ait eu le temps de s'afficher
       }
-    }, 100);
+    }, 200);
 
     return () => clearInterval(interval);
   }, [score]);
 
-  // Animation des icônes (avec délai augmenté pour laisser l'appréciation s'afficher)
+  // Animation de l'appréciation
   useEffect(() => {
-    if (!iconsRef.current || !showAppreciation) return;
+    if (showAppreciation && appreciationRef.current) {
+      // Animation douce pour l'appréciation
+      gsap.fromTo(
+        appreciationRef.current,
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.95
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          ease: "power2.out"
+        }
+      );
+    }
+  }, [showAppreciation]);
+
+  // Animation des icônes (seulement quand showButtons est true)
+  useEffect(() => {
+    if (!iconsRef.current || !showButtons) return;
 
     // Animation pour les icônes
     gsap.fromTo(
@@ -53,7 +82,6 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
         duration: 0.8,
         stagger: 0.3,
         ease: "back.out(1.7)",
-        delay: 0.8, // Délai après l'apparition de l'appréciation
       }
     );
 
@@ -67,10 +95,10 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
         opacity: 1,
         duration: 0.8,
         stagger: 0.3,
-        delay: 1.0,
+        delay: 0.2,
       }
     );
-  }, [showAppreciation]);
+  }, [showButtons]);
 
   // Handlers existants...
   const handleCopyLink = () => {
@@ -92,29 +120,34 @@ export default function ScoreDisplay({ score, total, onRestart }: Props) {
         {displayedScore}/{total}
       </p>
 
-      {/* Utilisation du nouveau composant */}
-      {showAppreciation && <AppreciationDisplay score={score} />}
-
-      <div className="score-buttons" ref={iconsRef}>
-        <div className="button-column">
-          <span className="button-label">Partager ce quiz</span>
-          <button className="icon-button" onClick={handleCopyLink}>
-            📤
-          </button>
-        </div>
-        <div className="button-column">
-          <span className="button-label">Recruter son créateur</span>
-          <button className="icon-button levitating" onClick={handleCopyEmail}>
-            🎯
-          </button>
-        </div>
-        <div className="button-column">
-          <span className="button-label">Recommencer</span>
-          <button className="icon-button" onClick={onRestart}>
-            🔁
-          </button>
-        </div>
+      {/* Conteneur pour l'appréciation avec ref pour l'animation */}
+      <div ref={appreciationRef} style={{ opacity: 0 }}>
+        {showAppreciation && <AppreciationDisplay score={score} />}
       </div>
+
+      {/* Les boutons n'apparaissent que lorsque showButtons est true */}
+      {showButtons && (
+        <div className="score-buttons" ref={iconsRef}>
+          <div className="button-column">
+            <span className="button-label">Partager ce quiz</span>
+            <button className="icon-button" onClick={handleCopyLink}>
+              📤
+            </button>
+          </div>
+          <div className="button-column">
+            <span className="button-label">Recruter son créateur</span>
+            <button className="icon-button levitating" onClick={handleCopyEmail}>
+              🎯
+            </button>
+          </div>
+          <div className="button-column">
+            <span className="button-label">Recommencer</span>
+            <button className="icon-button" onClick={onRestart}>
+              🔁
+            </button>
+          </div>
+        </div>
+      )}
 
       {copied && (
         <p className="copy-message">
