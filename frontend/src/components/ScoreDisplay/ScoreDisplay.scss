@@ -6,9 +6,11 @@
   color: #fff;
 
   h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     color: #ffffff; // vert
+    font-family: 'Dala Moa Web Medium Regular';
+
   }
 
   .score {
@@ -40,6 +42,7 @@
   }
 
   .score-buttons {
+    font-family: 'Dala Moa Web Medium Regular';
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -54,7 +57,7 @@
 
   .button-label {
     margin-bottom: 2rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #ffffff;
   }
 

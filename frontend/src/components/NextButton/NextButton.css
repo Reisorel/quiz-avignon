@@ -7,10 +7,11 @@
 }
 
 .next-button {
+  font-size: 1.25rem;
+  font-family: "Dala Moa Web Medium Regular";
   background-color: black;
   color: white;
   padding: 1rem 2rem;
-  font-size: 1rem;
   border: none;
   border-radius: 25px;
   cursor: pointer;

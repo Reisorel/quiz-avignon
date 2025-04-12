@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 body {
   font-family: "Roboto", sans-serif;
   color: #e60909;
@@ -36,6 +37,11 @@ li {
   font-size: 1rem;
 }
 
+@font-face {
+  font-family: "Dala Moa Web Medium Regular";
+  src: url("https://db.onlinewebfonts.com/t/b07a5f8c04d956810beb99dc82373b3c.eot");
+  src: url("https://db.onlinewebfonts.com/t/b07a5f8c04d956810beb99dc82373b3c.eot?#iefix") format("embedded-opentype"), url("https://db.onlinewebfonts.com/t/b07a5f8c04d956810beb99dc82373b3c.woff2") format("woff2"), url("https://db.onlinewebfonts.com/t/b07a5f8c04d956810beb99dc82373b3c.woff") format("woff"), url("https://db.onlinewebfonts.com/t/b07a5f8c04d956810beb99dc82373b3c.ttf") format("truetype"), url("https://db.onlinewebfonts.com/t/b07a5f8c04d956810beb99dc82373b3c.svg#Dala Moa Web Medium Regular") format("svg");
+}
 html, body {
   display: flex;
   flex-direction: column;

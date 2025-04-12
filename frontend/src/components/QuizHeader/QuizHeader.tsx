@@ -19,7 +19,7 @@ export default function QuizHeader() {
     <div className="header-content">
       <div className="header-text">
         <h1 className="header-title">
-          Quiz. Êtes-vous incollable sur le festival d'Avignon ?{" "}
+          Quiz. Etes-vous incollable sur le festival d'Avignon <span>?</span>{" "}
         </h1>
         <div className="header-description">
           <p>
