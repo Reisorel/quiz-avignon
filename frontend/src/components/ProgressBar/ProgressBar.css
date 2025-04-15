@@ -21,4 +21,10 @@
 
 .bar-segment.wrong {
   background-color: #d9534f;
+}
+
+@media (max-width: 768px) {
+  .progress-bar {
+    height: 1rem;
+  }
 }/*# sourceMappingURL=ProgressBar.css.map */

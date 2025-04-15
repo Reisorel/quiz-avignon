@@ -30,4 +30,10 @@
 }
 .debug-button:hover {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .central_container {
+    width: 100%;
+  }
 }/*# sourceMappingURL=Central.css.map */

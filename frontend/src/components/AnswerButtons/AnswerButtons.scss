@@ -1,12 +1,11 @@
 .answer-buttons {
-  background-color: #006B80;
+  background-color: #006b80;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin: 0 4rem;
 }
 
 .answer-button {
@@ -42,7 +41,6 @@
     background-color: #4caf50;
     color: white;
   }
-
 }
 
 .answer-button.selected {
@@ -50,18 +48,26 @@
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
-.answer-button {
-  justify-content: left;
-}
-
 // Animation de clignotement pour la bonne réponse
 @keyframes blink {
-  0% { background-color: #4CAF50; } /* Vert */
-  50% { background-color: #e0e0e0; } /* Gris */
-  100% { background-color: #4CAF50; } /* Vert */
+  0% {
+    background-color: #4caf50;
+  } /* Vert */
+  50% {
+    background-color: #e0e0e0;
+  } /* Gris */
+  100% {
+    background-color: #4caf50;
+  } /* Vert */
 }
 
 .answer-button.blinking {
   animation: blink 0.3s ease-in-out 3; /* 3 clignotements de 0.3s chacun */
   color: white !important; /* Ajoute !important pour garantir la priorité */
+}
+
+@media (max-width: 768px) {
+  .answer-button {
+    padding: 0.75rem;
+  }
 }

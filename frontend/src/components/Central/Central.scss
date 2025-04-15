@@ -34,3 +34,10 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 768px) {
+
+  .central_container {
+    width: 100%; // Réduit la largeur à 100% sur les petits écrans
+  }
+}

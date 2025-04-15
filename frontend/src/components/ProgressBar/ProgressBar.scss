@@ -22,3 +22,10 @@
 .bar-segment.wrong {
   background-color: #d9534f; // rouge
 }
+
+@media (max-width: 768px) {
+
+  .progress-bar {
+    height: 1rem;
+  }
+}
